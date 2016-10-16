@@ -1,3 +1,4 @@
+#include "Header.h"
 /********************************************************************
 Algorithm 4: Linear-time. 
 Use the following ideas to develop a nonrecursive linear time algorithm. 
@@ -12,23 +13,36 @@ Determine a maximum subarray of the form A[i . . j+1] in constant
 time based on knowing a maximum subarray ending at index j.
 *********************************************************************/
 
-int maxSeqLinear(int* array, int length) {
-    int largestSum = 0;
+maxSeq maxSeqLinear(int* array, int length) {
+    int maxSum = 0;
     int currentSum = 0;
+    int maxStart = 0;
+    int maxEnd = 0;
+    int currentStart = 0;
+    int currentEnd = 0;
     // loop from the beginning to the end
     for (int i = 0; i < length; i++) {
         // if sequence ending at i - 1 is not larger than 0
         // the largest seq sum ending at i is array[i]
-        if (currentSum <= 0)
+        if (currentSum <= 0) {
             currentSum = array[i];
+            currentStart = i;
+            currentEnd = i;
+        }
         // otherwise, the largest seq ending at i is previous
         // sum plus array[i]
-        else 
+        else {
             currentSum += array[i];
+            currentEnd = i;
+        }
+
         // compare the largest seq sum ending at i with the 
         // largest sum ending at previous location
-        if (currentSum > largestSum)
-            largestSum = currentSum;
+        if (currentSum > maxSum) {
+            maxSum = currentSum;
+            maxStart = currentStart;
+            maxEnd = currentEnd;
+        }
     }
-    return largestSum;
+    return{ maxStart, maxEnd, maxSum };
 }

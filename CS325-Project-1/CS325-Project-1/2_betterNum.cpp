@@ -1,3 +1,4 @@
+#include "Header.h"
 /********************************************************************
 Algorithm 2: Better Enumeration. 
 Notice that in the previous algorithm the same sum is computed many 
@@ -7,11 +8,12 @@ scratch. Write a new version of the first algorithm that takes
 advantage of this observation.
 *********************************************************************/
 
-int maxSeqBetterEnum(int* array, int length) {
-    // initiates the largest sum and current sum
+maxSeq maxSeqBetterEnum(int* array, int length) {
     int largestSum = 0;
     int currentSum = 0;
-    
+    int start = 0;
+    int end = 0;
+
     // loop over all sequences
     // loop over sequences starting from i
     for (int i = 0; i < length; i++) {
@@ -23,9 +25,11 @@ int maxSeqBetterEnum(int* array, int length) {
             // update the largest sum if found
             if (currentSum > largestSum) {
                 largestSum = currentSum;
+                start = i;
+                end = j;
             }
         }
     }
 
-    return largestSum;
+    return{ start, end, largestSum };
 }

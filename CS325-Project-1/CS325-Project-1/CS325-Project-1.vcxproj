@@ -151,9 +151,13 @@
     <ClCompile Include="3_DandC.cpp" />
     <ClCompile Include="4_linear.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="operator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="MSS_Problems.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
